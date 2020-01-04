@@ -1,0 +1,12 @@
+version: "3.7"
+services:
+  switch-env:
+    build: .
+    image: hay
+    stdin_open: false
+#    stdin_open: true
+    command: bash -c 'make && nxlink -a 10.0.1.7 ./hay.nro'
+#    command: bash -c 'make'
+    working_dir: /root
+    volumes:
+      - ../app:/root
