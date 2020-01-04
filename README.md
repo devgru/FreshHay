@@ -2,6 +2,8 @@
 
 > The main part of a rabbit's diet should be unlimited amounts of fresh hay
 
+![Fresh Hay](https://raw.githubusercontent.com/devgru/FreshHay/master/app/icon.jpg)
+
 Fresh Hay is a homebrew app designed to be part of Kefir.
 
 It downloads firmware version supported by provided Atmosphere/SX OS versions to be installed via ChoiDujourNX.
