@@ -138,8 +138,7 @@ int main(int argc, char *argv[]) {
         goto exit;
     }
 
-    bool noNeedToUpdate = false;
-    hosversionAtLeast(targetMajorVersion, targetMinorVersion, targetPatchVersion);
+    bool noNeedToUpdate = hosversionAtLeast(targetMajorVersion, targetMinorVersion, targetPatchVersion);
 
     if (noNeedToUpdate) {
         printf("Your firmware is fresh enough, no need to download anything. Press + to exit.\n");
@@ -159,7 +158,7 @@ int main(int argc, char *argv[]) {
     if (ip == INADDR_LOOPBACK) {
         printf("Waiting for internet connection. Are you in airplane mode?\n");
     } else {
-        printf("Press A to start archive download. Press + to exit.\n\n");
+        printf("Press A to start. Press + to exit.\n\n");
     }
 
     while (appletMainLoop()) {
@@ -169,7 +168,7 @@ int main(int argc, char *argv[]) {
         if (ip == INADDR_LOOPBACK && (gethostid() != INADDR_LOOPBACK)) {
             ip = gethostid();
             printf("Internet connection restored, proceeding.\n\n");
-            printf("Press A to start archive download. Press + to exit.\n\n");
+            printf("Press A to start. Press + to exit.\n\n");
         }
 
         if (ip != INADDR_LOOPBACK && (kDown & KEY_A) && !startDownloadingArchive) {
@@ -180,14 +179,15 @@ int main(int argc, char *argv[]) {
             long responseCode = downloadArchive(fileId, fileKey, archiveLocation);
 
             if (responseCode >= 400 || !FS_FileExists(fs, archiveLocation)) {
-                printf("Error occured while downloading archive, retry later. Press + to exit \n");
+                printf("Error occurred while downloading archive, retry later. Press + to exit \n");
             } else {
                 if (!FS_FileExists(fs, firmwareDirectory)) {
                     mkdir(firmwareDirectory, 0777);
                 }
                 chdir(firmwareDirectory);
                 unzip(archiveLocation);
-                printf("\n\nPoint ChoiDujourNX to %s, we have some food for them.", firmwareDirectory);
+                printf("\n\nSuccess!");
+                printf("\nPoint ChoiDujourNX to %s, we have some food for them.", firmwareDirectory);
                 printf("\n\nAfter updating firmware consider removing");
                 printf("\n- %s", firmwareDirectory);
                 printf("\n- %s", archiveLocation);
