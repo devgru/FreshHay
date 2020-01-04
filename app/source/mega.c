@@ -142,7 +142,6 @@ long downloadFile(const char *url, u32 fileSize, const char *fileName, Aes128Ctr
     } else {
       printf("Target archive already present but has wrong size, re-downloading it.\n");
       remove(fileName);
-      return 0;
     }
   }
   FILE *fp = fopen(fileName, "ab");
