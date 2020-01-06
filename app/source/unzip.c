@@ -21,7 +21,7 @@ int unzip(const char *zipFilePath) {
   }
 
   printf("\nUnzipping. There are %ld files in archive.\n\n", globalInfo.number_entry);
-  printf("1                  20                  40                  60                 80");
+  printf("0                  20                  40                  60                 80");
 
   for (int i = 0; i < globalInfo.number_entry; i++) {
     printf("|");
