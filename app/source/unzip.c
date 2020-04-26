@@ -10,6 +10,7 @@
 #define MAXFILENAME     500
 
 int unzip(const char *zipFilePath) {
+  appletSetAutoSleepDisabled(true);
   unzFile zipFile = unzOpen(zipFilePath);
   unz_global_info globalInfo;
   unzGetGlobalInfo(zipFile, &globalInfo);

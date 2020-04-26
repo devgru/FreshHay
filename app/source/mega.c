@@ -144,6 +144,8 @@ long downloadFile(const char *url, u32 fileSize, const char *fileName, Aes128Ctr
       remove(fileName);
     }
   }
+
+  appletSetAutoSleepDisabled(true);
   FILE *fp = fopen(fileName, "ab");
   write_encrypted_result write_result = {
     .pos = 0,

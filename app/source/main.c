@@ -89,7 +89,7 @@ Result readTargetFile() {
   fileKey = newFileKey;
 
   free(buffer);
-  printf("Target firmware version: %d.%d.%d\n\n", targetMajorVersion, targetMinorVersion, targetPatchVersion);
+  printf("Available firmware version: %d.%d.%d\n\n", targetMajorVersion, targetMinorVersion, targetPatchVersion);
   return ret;
 }
 
@@ -105,8 +105,7 @@ int main(int argc, char *argv[]) {
   fs = &devices[0];
   consoleInit(NULL);
 
-  printf("Fresh Hay v0.0.2\n\n");
-
+  printf("Fresh Hay v0.1.0\n\n");
   currentVersion = hosversionGet();
   currentMajorVersion = HOSVER_MAJOR(currentVersion);
   currentMinorVersion = HOSVER_MINOR(currentVersion);
@@ -204,6 +203,7 @@ int main(int argc, char *argv[]) {
 
   exit:
   consoleExit(NULL);
+  appletSetAutoSleepDisabled(false);
   socketExit();
   return ret;
 }

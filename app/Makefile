@@ -46,7 +46,7 @@ INCLUDES	:=	include #vendor/megatools
 
 APP_TITLE   := Fresh Hay
 APP_AUTHOR  := Devgru (Dmitriy Semyushkin)
-APP_VERSION := 0.0.2
+APP_VERSION := 0.1.0
 
 
 #---------------------------------------------------------------------------------
