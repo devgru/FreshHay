@@ -1,12 +1,11 @@
 version: "3.7"
 services:
   common: &common
-    build: .
-    image: hay
+    image: devkitpro/devkita64
     stdin_open: false
     working_dir: /root
     volumes:
-      - ../app:/root
+      - ./app:/root
   make: &make
     <<: *common
     command: bash -c 'make'
